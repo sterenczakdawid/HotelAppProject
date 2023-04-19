@@ -1,7 +1,15 @@
+import { Navbar, Footer } from "./components";
+import { AllRoutes } from "./routes/AllRoutes";
 import "./App.css";
 
 function App() {
-	return <h1>Hello World!</h1>;
+	return (
+		<div className="App">
+			<Navbar />
+			<AllRoutes />
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
