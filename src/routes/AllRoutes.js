@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage, ContactPage, PageNotFound } from "../pages";
+import { HomePage, ContactPage, Rooms, PageNotFound } from "../pages";
 
 export const AllRoutes = () => {
 	return (
@@ -7,6 +7,7 @@ export const AllRoutes = () => {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="contact" element={<ContactPage />} />
+				<Route path = "rooms" element = {<Rooms />}/>
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 		</main>
