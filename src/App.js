@@ -1,4 +1,4 @@
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer, Hero } from "./components";
 import { AllRoutes } from "./routes/AllRoutes";
 import "./App.css";
 
