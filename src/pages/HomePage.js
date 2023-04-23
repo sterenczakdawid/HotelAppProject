@@ -1,10 +1,11 @@
 // import { heroBig } from "../assets/images/hero-big.jpg"
-import { Hero } from "../components";
+import { Hero, TestComponent } from "../components";
 
 export const HomePage = () => {
 	return (
-	<div>
-		<Hero />
-	</div>
+		<section>
+			<Hero />
+			<TestComponent />
+		</section>
 	);
 };
