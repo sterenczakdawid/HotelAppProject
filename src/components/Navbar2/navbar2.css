@@ -1,0 +1,38 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+nav a {
+  color: #fff;
+}
+nav .logo {
+  color: #fff;
+  font-size: 2.7rem;
+  font-weight: bold;
+  padding: 5px;
+  cursor: pointer;
+}
+nav .logo span {
+  font-size: 2.2rem;
+}
+nav .fa-spa {
+  margin-right: 5px;
+}
+nav .nav-item {
+  margin: 10px;
+  padding: 2.5px 10px;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+nav .nav-item .nav-item:hover,
+nav .nav-item .active {
+  background-color: #01959a;
+  color: #fff;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+nav .nav-item i {
+  padding-right: 5px;
+}/*# sourceMappingURL=navbar2.css.map */

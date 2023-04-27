@@ -9,11 +9,11 @@ header h1 {
 header .hero-img {
   position: relative;
   height: 100vh;
-  background-image: url("../../assets/images/hero-big.jpg");
+  background-image: url("../../assets/images/hero-small.jpg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  z-index: 0;
+  z-index: -2;
 }
 header .hero-shadow {
   position: absolute;
@@ -29,4 +29,10 @@ header .hero-text {
   align-items: center;
   height: 100%;
   z-index: 5;
+}
+
+@media (min-width: 1200px) {
+  header .hero-img {
+    background-image: url("../../assets/images/hero-big.jpg");
+  }
 }/*# sourceMappingURL=hero.css.map */
