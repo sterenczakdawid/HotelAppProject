@@ -2,9 +2,12 @@ header {
   color: #fff;
 }
 header h1 {
-  text-transform: uppercase;
-  font-size: 56px;
+  font-size: 36px;
   font-weight: bold;
+  font-family: "Dancing Script";
+}
+header p {
+  font-size: 14px;
 }
 header .hero-img {
   position: relative;
@@ -13,7 +16,7 @@ header .hero-img {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  z-index: -2;
+  z-index: 0;
 }
 header .hero-shadow {
   position: absolute;
@@ -28,10 +31,44 @@ header .hero-text {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 10px;
+  text-align: center;
   z-index: 5;
 }
+header .btn {
+  text-transform: uppercase;
+}
+header .fa-chevron-down {
+  position: absolute;
+  font-size: 30px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+@media (min-width: 375px) {
+  header h1 {
+    font-size: 44px;
+  }
+  header p {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 58px;
+  }
+  header p {
+    font-size: 20px;
+  }
+}
 @media (min-width: 1200px) {
+  header h1 {
+    font-size: 66px;
+  }
+  header p {
+    font-size: 22px;
+  }
   header .hero-img {
     background-image: url("../../assets/images/hero-big.jpg");
   }

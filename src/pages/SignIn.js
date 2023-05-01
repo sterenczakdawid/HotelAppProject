@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export const SignIn = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -9,12 +10,33 @@ export const SignIn = () => {
 	});
 
 	const { email, password } = formData;
+	const navigate = useNavigate();
 
 	const onChange = (e) => {
 		setFormData((prevState) => ({
 			...prevState,
 			[e.target.id]: e.target.value,
 		}));
+	};
+
+	const onSubmit = async (e) => {
+		e.preventDefault();
+
+		try {
+			const auth = getAuth();
+
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+
+			if (userCredential.user) {
+				navigate("/");
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -25,7 +47,7 @@ export const SignIn = () => {
 				</header>
 
 				<main>
-					<form>
+					<form onSubmit={onSubmit}>
 						<input
 							type="email"
 							className="emailInput"

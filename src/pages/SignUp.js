@@ -6,7 +6,7 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import { serverTimestamp, setDoc, doc } from "firebase/firestore";
-import { db } from "../firebase/config"
+import { db } from "../firebase/config";
 // import { create } from "json-server";
 
 export const SignUp = () => {
@@ -48,7 +48,7 @@ export const SignUp = () => {
 			delete formDataCopy.password;
 			formDataCopy.timestamp = serverTimestamp();
 
-			await setDoc(doc(db, 'users', user.uid), formDataCopy);
+			await setDoc(doc(db, "users", user.uid), formDataCopy);
 
 			navigate("/");
 		} catch (error) {
