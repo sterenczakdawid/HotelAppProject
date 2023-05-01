@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 // import heroBig from "../../assets/images/hero-big.jpg";
 import "./hero.css";
+import "../../assets/animations/bounce.css"
 
 export const Hero = () => {
 	return (
@@ -18,7 +19,7 @@ export const Hero = () => {
 							Sprawdź ofertę!
 						</Link>
 					</div>
-					<a href="#aboutus"><i className="fas fa-chevron-down"></i></a>
+					<a href="#aboutus"><i className="fas fa-chevron-down bounce-top"></i></a>
 				</div>
 			</header>
 			<div id = "aboutus" style={{ height: 100 + "vh" }}>
