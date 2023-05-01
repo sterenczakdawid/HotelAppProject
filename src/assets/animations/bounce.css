@@ -1,5 +1,5 @@
 .bounce-top {
-	-webkit-animation: bounce-top 2s infinite both;
+	display: block;
 	animation: bounce-top 2s infinite both;
 }
 

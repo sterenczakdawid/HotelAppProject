@@ -1,4 +1,4 @@
-import { Hero, TestComponent } from "../components";
+import { Hero, TestComponent, AboutUs } from "../components";
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase/config";
@@ -15,11 +15,13 @@ export const HomePage = () => {
 			);
 		}
 		getRooms();
+		console.log(rooms);
 	}, []);
 
 	return (
 		<section>
 			<Hero />
+			<AboutUs />
 			<TestComponent />
 		</section>
 	);

@@ -1,3 +1,10 @@
+import { TestComponent } from "../components";
+
 export const Rooms = () => {
-	return <div>Rooms</div>;
+	return (
+		<>
+			<div className = "bg-white">Rooms</div>
+			<TestComponent />;
+		</>
+	);
 };
