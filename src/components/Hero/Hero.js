@@ -24,9 +24,6 @@ export const Hero = () => {
 					</a>
 				</div>
 			</header>
-			{/* <div id="aboutus" style={{ height: 100 + "vh" }}>
-				aboutus
-			</div> */}
 		</>
 	);
 };

@@ -3,4 +3,5 @@ export { Navbar } from "./Navbar";
 export { Hero } from "./Hero/Hero";
 export { RoomCard } from "./RoomCard";
 export { TestComponent } from "./TestComponent";
-export {AboutUs} from "./AboutUs"
+export { AboutUs } from "./AboutUs";
+export { LoginCard } from "./LoginCard";

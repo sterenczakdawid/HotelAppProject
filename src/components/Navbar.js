@@ -46,7 +46,7 @@ export const Navbar = () => {
 						hidden ? "hidden" : ""
 					} navbar-nav w-full md:block md:w-auto`}
 					id="navbar-solid-bg">
-					<div className="flex flex-col md:flex-row">
+					<div className="flex flex-col justify-center items-center md:flex-row">
 						<NavLink
 							className={({ isActive }) =>
 								isActive ? activeClass : inactiveClass
@@ -74,7 +74,11 @@ export const Navbar = () => {
 							<i className=" px-2 fa-solid fa-address-book" />
 							Kontakt
 						</NavLink>
-						<Link to = "/signin"><button className="block mt-1 ml-2 p-5 text-2xl font-normal rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300">Logowanie</button></Link>
+						<Link to="/signin" onClick={handleLink} >
+							<button className="block mt-1 ml-2 p-5 text-2xl font-normal rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300">
+								Logowanie
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-import { TestComponent } from "../components";
+import { Hero, TestComponent } from "../components";
 
 export const Rooms = () => {
 	return (
