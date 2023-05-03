@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 export const LoginCard = () => {
+	// const [isAuth, setIsAuth] = useState(JSON.parse(localStorage.getItem("isAuth")) || false);
 	// const [showPassword, setShowPassword] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
@@ -19,7 +21,7 @@ export const LoginCard = () => {
 		}));
 	};
 
-	const onSubmit = async (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
 
 		try {
@@ -34,8 +36,12 @@ export const LoginCard = () => {
 			if (userCredential.user) {
 				navigate("/");
 			}
+
+			// setIsAuth(true);
+			localStorage.setItem("isAuth", true);
 		} catch (error) {
-			console.log(error);
+			// toast.error("Wprowadzono błędne dane!");
+			toast.error(error.code);
 		}
 	};
 
@@ -44,7 +50,7 @@ export const LoginCard = () => {
 			<header>
 				<h2 className="p-10 text-6xl font-['Dancing_Script']">Zaloguj się</h2>
 			</header>
-			<form className="space-y-7" onSubmit={onSubmit}>
+			<form className="space-y-7" onSubmit={handleLogin}>
 				<div>
 					<label htmlFor="email" className="block mb-2 text-2xl">
 						Twój email

@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { serverTimestamp, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { toast } from "react-toastify";
 
 export const RegistrationCard = () => {
 	// const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,7 @@ export const RegistrationCard = () => {
 		}));
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSignUp = async (e) => {
 		e.preventDefault();
 		// console.log("done!");
 
@@ -51,7 +52,7 @@ export const RegistrationCard = () => {
 
 			navigate("/");
 		} catch (error) {
-			console.log(error);
+			toast.error("Wystąpił błąd podczas rejestracji");
 		}
 	};
 
@@ -63,7 +64,7 @@ export const RegistrationCard = () => {
 				</h2>
 			</header>
 
-			<form className="space-y-7" onSubmit={handleSubmit}>
+			<form className="space-y-7" onSubmit={handleSignUp}>
 				<div>
 					<label htmlFor="name" className="block mb-2 text-2xl">
 						Twoje imię

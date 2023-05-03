@@ -8,6 +8,7 @@ import {
 	Profile,
 	PageNotFound,
 } from "../pages";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 
 export const AllRoutes = () => {
 	return (
@@ -18,7 +19,14 @@ export const AllRoutes = () => {
 				<Route path="rooms" element={<Rooms />} />
 
 				<Route path="signin" element={<SignIn />} />
-				<Route path="profile" element={<Profile />} />
+				<Route
+					path="profile"
+					element={
+						<ProtectedRoutes>
+							<Profile />
+						</ProtectedRoutes>
+					}
+				/>
 				<Route path="signup" element={<SignUp />} />
 
 				<Route path="*" element={<PageNotFound />} />

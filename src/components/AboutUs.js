@@ -13,11 +13,11 @@ export const AboutUs = () => {
 					/>
 					<div className="stars flex flex-col p-5">
 						<div>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
-							<i class="fa-solid fa-star"></i>
+							<i className="fa-solid fa-star"></i>
+							<i className="fa-solid fa-star"></i>
+							<i className="fa-solid fa-star"></i>
+							<i className="fa-solid fa-star"></i>
+							<i className="fa-solid fa-star"></i>
 						</div>
 						<p className="p-5">
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
