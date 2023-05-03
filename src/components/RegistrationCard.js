@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	updateProfile,
+} from "firebase/auth";
+import { serverTimestamp, setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/config";
 
-export const LoginCard = () => {
+export const RegistrationCard = () => {
 	// const [showPassword, setShowPassword] = useState(false);
 	const [formData, setFormData] = useState({
+		name: "",
 		email: "",
 		password: "",
 	});
 
-	const { email, password } = formData;
+	const { name, email, password } = formData;
 	const navigate = useNavigate();
 
 	const onChange = (e) => {
@@ -19,32 +26,58 @@ export const LoginCard = () => {
 		}));
 	};
 
-	const onSubmit = async (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		// console.log("done!");
 
 		try {
 			const auth = getAuth();
-
-			const userCredential = await signInWithEmailAndPassword(
+			const userCredential = await createUserWithEmailAndPassword(
 				auth,
 				email,
 				password
 			);
+			const user = userCredential.user;
 
-			if (userCredential.user) {
-				navigate("/");
-			}
+			updateProfile(auth.currentUser, {
+				displayName: name,
+			});
+
+			const formDataCopy = { ...formData };
+			delete formDataCopy.password;
+			formDataCopy.timestamp = serverTimestamp();
+
+			await setDoc(doc(db, "users", user.uid), formDataCopy);
+
+			navigate("/");
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	return (
-		<div className="w-1/4 min-w-[300px] h-1/2 min-h-[400px] bg-black/[.60] border rounded-lg">
+		<div className="w-1/4 min-w-[300px] h-3/5 min-h-[400px] bg-black/[.60] border rounded-lg">
 			<header>
-				<h2 className="p-10 text-6xl font-['Dancing_Script']">Zaloguj się</h2>
+				<h2 className="p-10 text-6xl font-['Dancing_Script']">
+					Zarejestruj się
+				</h2>
 			</header>
-			<form className="space-y-7" onSubmit={onSubmit}>
+
+			<form className="space-y-7" onSubmit={handleSubmit}>
+				<div>
+					<label htmlFor="name" className="block mb-2 text-2xl">
+						Twoje imię
+					</label>
+					<input
+						type="text"
+						className="nameInput w-3/4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+						placeholder="Imię"
+						id="name"
+						value={name}
+						onChange={onChange}
+						autoComplete="off"
+					/>
+				</div>
 				<div>
 					<label htmlFor="email" className="block mb-2 text-2xl">
 						Twój email
@@ -59,6 +92,7 @@ export const LoginCard = () => {
 						autoComplete="off"
 					/>
 				</div>
+
 				<div className="passwordInputDiv">
 					<label htmlFor="password" className="block mb-2 text-2xl">
 						Twoje hasło
@@ -79,17 +113,21 @@ export const LoginCard = () => {
 				<button
 					type="submit"
 					className="w-2/4 text-white bg-transparent border rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-2xl px-5 py-2.5 text-center hover:bg-white hover:text-black transition duration-300">
-					Zaloguj się
+					Zarejestruj się
 				</button>
 
 				<div>
-					<p>Nie masz jeszcze konta? </p>
-					<Link to="/signup">
+					<p>Masz już konto? </p>
+					<Link to="/signin">
 						<span className="text-blue-700 hover:underline dark:text-blue-500">
-							Zarejestruj się!
+							Zaloguj się!
 						</span>
 					</Link>
 				</div>
+
+				{/* <div className="signUpBar">
+      <p className="signUpText">Sign In!</p>
+    </div> */}
 			</form>
 		</div>
 	);
