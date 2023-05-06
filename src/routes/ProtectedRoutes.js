@@ -1,7 +1,14 @@
 import { Navigate } from "react-router-dom";
+import { useAuthStatus } from "../hooks/useAuthStatus";
+import { Spinner } from "../components/Spinner";
 
 export const ProtectedRoutes = ({ children }) => {
-	const isAuth = JSON.parse(localStorage.getItem("isAuth") || false);
+	// const isAuth = JSON.parse(localStorage.getItem("isAuth") || false);
+	const { loggedIn, checkingStatus } = useAuthStatus();
 
-	return isAuth ? children : <Navigate to="/signin" />;
+	if (checkingStatus) {
+		return <Spinner />;
+	}
+
+	return loggedIn ? children : <Navigate to="/signin" />;
 };
