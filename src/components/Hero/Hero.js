@@ -4,6 +4,10 @@ import "./hero.css";
 import "../../assets/animations/bounce.css";
 
 export const Hero = () => {
+	const handleBouncyThing = () => {
+		window.scrollTo(0, 712);
+	};
+
 	return (
 		<>
 			<header>
@@ -19,9 +23,11 @@ export const Hero = () => {
 							Sprawdź ofertę!
 						</Link>
 					</div>
-					<a className = "flex items-center justify-center" href="#aboutus">
+					<div
+						className="flex items-center justify-center cursor-pointer"
+						onClick={handleBouncyThing}>
 						<i className="fas fa-chevron-down p-5 bounce-top"></i>
-					</a>
+					</div>
 				</div>
 			</header>
 		</>
