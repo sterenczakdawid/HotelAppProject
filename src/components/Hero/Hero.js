@@ -19,8 +19,8 @@ export const Hero = () => {
 						<Link
 							to="/rooms"
 							type="button"
-							className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800 mt-5">
-							Sprawdź ofertę!
+							className="block mt-10 ml-2 p-5 text-2xl font-normal rounded-lg border-2 border-white hover:bg-white hover:text-black transition duration-300 px-5 py-2.5 text-center mr-2 mb-2">
+							Sprawdź ofertę
 						</Link>
 					</div>
 					<div
