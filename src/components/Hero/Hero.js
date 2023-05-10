@@ -14,8 +14,8 @@ export const Hero = () => {
 				<div className="hero-img">
 					<div className="hero-shadow"></div>
 					<div className="hero-text">
-						<h1>Jakiś fancy nagłówek</h1>
-						<p>Jeszcze bardziej fancy paragraf</p>
+						<h1>Witamy w VCHotel</h1>
+						<p>Twój komfort to nasz priorytet!</p>
 						<Link
 							to="/rooms"
 							type="button"

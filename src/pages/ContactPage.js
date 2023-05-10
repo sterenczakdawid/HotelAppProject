@@ -19,16 +19,36 @@ export const ContactPage = () => {
 					</div>
 				</div>
 			</header>
-			<section className="bg-gray-700 flex flex-row justify-between p-5">
-				<ContactCard src={contactEmail} />
-				<ContactCard src={contactLocalization} />
-				<ContactCard src={contactPhone} />
-				<div className="w-[700px] h-[400px] border">
-					<p>mapa</p>
+			<section className="bg-white py-12">
+				<div className="flex flex-col mx-auto my-0 md:flex-row justify-center items-center p-5">
+					<ContactCard
+						src={contactEmail}
+						iconClass="fa-envelope"
+						title="EMAIL"
+						content="vcwwa@hotel.com"
+						content2=""
+					/>
+					<ContactCard
+						src={contactLocalization}
+						iconClass="fa-map-marker-alt"
+						title="LOKALIZACJA"
+						content={"plac Politechniki 1"}
+						content2="00-661 Warszawa"
+					/>
+					<ContactCard
+						src={contactPhone}
+						iconClass="fa-phone"
+						title="NUMER TELEFONU"
+						content="+48 111 222 333"
+						content2=""
+					/>
 				</div>
+				{/* <div className="w-[700px] h-[400px] border">
+					<p>mapa</p>
+				</div> */}
 			</section>
 			<div className="flex items-center justify-center">
-				<div className="h-[800px] w-[95%] border mt-5 p-5 text-center">
+				<div className="h-[800px] w-[95%] max-w-screen-xl border mt-5 p-5 text-center">
 					<p>formularz</p>
 				</div>
 			</div>
