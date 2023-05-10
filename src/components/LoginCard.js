@@ -46,7 +46,7 @@ export const LoginCard = () => {
 	};
 
 	return (
-		<div className="w-1/4 min-w-[300px] h-1/2 min-h-[400px] bg-black/[.60] border rounded-lg">
+		<div className=" min-w-[300px] h-[400px] md:w-[400px] bg-black/[.60] border rounded-lg">
 			<header>
 				<h2 className="p-10 text-6xl font-['Dancing_Script']">Zaloguj się</h2>
 			</header>

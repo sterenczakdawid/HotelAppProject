@@ -57,7 +57,7 @@ export const RegistrationCard = () => {
 	};
 
 	return (
-		<div className="w-1/4 min-w-[300px] h-3/5 min-h-[400px] bg-black/[.60] border rounded-lg">
+		<div className="min-w-[300px] min-h-[450px] md:w-[400px] bg-black/[.60] border rounded-lg">
 			<header>
 				<h2 className="p-10 text-6xl font-['Dancing_Script']">
 					Zarejestruj się
