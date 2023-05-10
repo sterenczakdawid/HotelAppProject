@@ -5,7 +5,7 @@ import "../../assets/animations/bounce.css";
 
 export const Hero = () => {
 	const handleBouncyThing = () => {
-		window.scrollTo(0, 712);
+		window.scrollTo(0, 650);
 	};
 
 	return (

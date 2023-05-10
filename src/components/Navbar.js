@@ -1,10 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Spin as Hamburger } from "hamburger-react";
+import { DropdownLoggedOut } from "./DropdownLoggedOut";
+import { DropdownLoggedIn } from "./DropdownLoggedIn";
 
 export const Navbar = () => {
+	const isAuth = JSON.parse(localStorage.getItem("isAuth") || false);
 	const [isOpen, setIsOpen] = useState(false);
 	const [hidden, setHidden] = useState(true);
+	const [dropdown, setDropdown] = useState(false);
 
 	const activeClass = "nav-item block mt-2 p-5 text-3xl font-normal underline";
 	const inactiveClass =
@@ -23,6 +27,10 @@ export const Navbar = () => {
 		setIsOpen(!isOpen);
 	};
 
+	const handleDropdownLink = () => {
+		setDropdown(!dropdown);
+	};
+
 	return (
 		<nav
 			className={`${
@@ -36,7 +44,8 @@ export const Navbar = () => {
 
 				<button
 					data-collapse-toggle="navbar-solid-bg"
-					className="md:hidden bg-transparent outline-none border-transparent" /*"p-2 rounded-lg md:hidden hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200"*/
+					className="md:hidden" /*bg-transparent outline-none border-transparent" /*"p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200"*/
+					// flex items-center justify-between w-full py-2 pl-3 pr-4  text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent
 					onClick={() => setHidden(!hidden)}>
 					<Hamburger toggled={isOpen} toggle={setIsOpen} direction="left" />
 				</button>
@@ -74,11 +83,17 @@ export const Navbar = () => {
 							<i className=" px-2 fa-solid fa-address-book" />
 							Kontakt
 						</NavLink>
-						<Link to="/signin" onClick={handleLink} >
-							<button className="block mt-1 ml-2 p-5 text-2xl font-normal rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300">
-								Logowanie
-							</button>
-						</Link>
+						<button
+							onClick={handleDropdownLink}
+							id="dropdownDefaultButton"
+							data-dropdown-toggle="dropdown"
+							className="relative block mt-1 ml-2 p-5 px-12 text-2xl font-normal rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300">
+							Konto
+							<i className="fas fa-chevron-down text-md pl-3"></i>
+							{isAuth
+								? dropdown && <DropdownLoggedIn handleLink={handleLink} />
+								: dropdown && <DropdownLoggedOut handleLink={handleLink} />}
+						</button>
 					</div>
 				</div>
 			</div>

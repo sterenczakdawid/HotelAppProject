@@ -1,3 +1,6 @@
+export { DropdownLoggedOut } from "./DropdownLoggedOut";
+export { DropdownLoggedIn } from "./DropdownLoggedIn";
+
 export { ContactCard } from "./ContactCard";
 export { Footer } from "./Footer";
 export { Navbar } from "./Navbar";
