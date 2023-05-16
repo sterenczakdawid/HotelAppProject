@@ -43,11 +43,8 @@ export const ContactPage = () => {
 						content2=""
 					/>
 				</div>
-				{/* <div className="w-[700px] h-[400px] border">
-					<p>mapa</p>
-				</div> */}
 			</section>
-			<div className="flex items-center justify-center">
+			<div className="flex items-center justify-center bg-white">
 				<div className="h-[800px] w-[95%] max-w-screen-xl border mt-5 p-5 text-center">
 					<p>formularz</p>
 				</div>

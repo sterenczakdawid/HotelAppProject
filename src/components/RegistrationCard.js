@@ -29,7 +29,6 @@ export const RegistrationCard = () => {
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
-		// console.log("done!");
 
 		try {
 			const auth = getAuth();
@@ -45,14 +44,15 @@ export const RegistrationCard = () => {
 			});
 
 			const formDataCopy = { ...formData };
-			delete formDataCopy.password;
+			// delete formDataCopy.password;
 			formDataCopy.timestamp = serverTimestamp();
 
 			await setDoc(doc(db, "users", user.uid), formDataCopy);
 
-			navigate("/");
+			navigate("/signin");
 		} catch (error) {
-			toast.error("Wystąpił błąd podczas rejestracji");
+			// toast.error("Wystąpił błąd podczas rejestracji");
+			toast.error(error.code);
 		}
 	};
 

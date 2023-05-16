@@ -10,9 +10,10 @@ export const Navbar = () => {
 	const [hidden, setHidden] = useState(true);
 	const [dropdown, setDropdown] = useState(false);
 
-	const activeClass = "nav-item block mt-2 p-5 text-3xl font-normal underline";
+	const activeClass =
+		"relative nav-item block mt-2 p-5 mx-1 text-3xl font-normal after:bg-white after:h-[2px] after:w-[100%] after:absolute after:bottom-0 after:left-0";
 	const inactiveClass =
-		"nav-item block mt-2 p-5 text-3xl font-normal hover:underline";
+		"relative nav-item block mt-2 mx-1 p-5 text-3xl font-normal after:transition-transform after:duration-300 after:bg-white after:h-[2px] after:w-[100%] after:absolute after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 hover:after:origin-left after:origin-right ";
 
 	const [scroll, setScroll] = useState();
 

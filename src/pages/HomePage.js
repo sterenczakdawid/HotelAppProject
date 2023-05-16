@@ -7,6 +7,7 @@ export const HomePage = () => {
 	const [rooms, setRooms] = useState([]);
 	const roomsRef = collection(db, "rooms");
 
+	
 	useEffect(() => {
 		async function getRooms() {
 			const data = await getDocs(roomsRef);
@@ -16,6 +17,7 @@ export const HomePage = () => {
 		}
 		getRooms();
 		console.log(rooms);
+		// eslint-disable-next-line
 	}, []);
 
 	return (
