@@ -14,3 +14,5 @@ export { LoginCard } from "./LoginCard";
 export { RegistrationCard } from "./RegistrationCard";
 
 export { ScrollToTop } from "./Other/ScrollToTop";
+
+export { Spinner } from "./Spinner";

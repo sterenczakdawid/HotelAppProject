@@ -49,7 +49,8 @@ export const RegistrationCard = () => {
 
 			await setDoc(doc(db, "users", user.uid), formDataCopy);
 
-			navigate("/signin");
+			navigate("/");
+			localStorage.setItem("isAuth", true);
 		} catch (error) {
 			// toast.error("Wystąpił błąd podczas rejestracji");
 			toast.error(error.code);
