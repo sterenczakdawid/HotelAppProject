@@ -35,7 +35,7 @@ export const Navbar = () => {
 	return (
 		<nav
 			className={`${
-				hidden ? (scroll >= 150 ? "bg-black/[.80]" : "") : "bg-black/[.80]"
+				hidden ? (scroll >= 100 ? "bg-black/[.80]" : "") : "bg-black/[.80]"
 			} navbar fixed top-0 w-full text-white z-10 transition duration-500`}>
 			<div className="wrapper flex flex-wrap items-center justify-between mx-auto my-0 max-w-screen-xl p-5">
 				<Link className="logo text-4xl md:text-5xl font-semibold p-5" to="/">

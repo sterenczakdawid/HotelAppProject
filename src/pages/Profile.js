@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 // import { updateProfile } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { updateDoc } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
+import { auth } from "../firebase/config";
 
 export const Profile = () => {
-	const [formData, setformData] = useState({
-		name: auth.currentUser.displayName,
-		email: auth.currentUser.email,
-	});
+	// const [formData, setformData] = useState({
+	// 	name: auth.currentUser.displayName,
+	// 	email: auth.currentUser.email,
+	// });
 
 	// const { name, email } = formData;
 	const navigate = useNavigate();
@@ -17,10 +17,6 @@ export const Profile = () => {
 		auth.signOut();
 		navigate("/");
 		localStorage.setItem("isAuth", false);
-	};
-
-	const onSubmit = () => {
-		console.log("123");
 	};
 
 	return (
