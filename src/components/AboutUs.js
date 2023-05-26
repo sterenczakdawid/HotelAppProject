@@ -8,8 +8,8 @@ export const AboutUs = () => {
 				<div className="picture flex items-center justify-around flex-col md:flex-row">
 					<img
 						src="https://images.unsplash.com/photo-1564574685150-74a84d02d695?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80"
-						alt="photo of our hotel"
-						className = "p-5"
+						alt="our hotel"
+						className="p-5"
 					/>
 					<div className="stars flex flex-col p-5">
 						<div>

@@ -1,4 +1,3 @@
-import { PageHero } from "../components/PageHero";
 import { ContactCard } from "../components";
 
 import contactEmail from "../assets/images/contact_us_first.png";
@@ -14,7 +13,7 @@ export const ContactPage = () => {
 					<div className="absolute w-full h-full bg-black/[.70] -z-10" />
 					<div className="flex flex-col content-center items-center z-5">
 						<h1 className="p-10 text-7xl font-['Dancing_Script']">
-							Skontakuj się z nami
+							Skontaktuj się z nami
 						</h1>
 					</div>
 				</div>
