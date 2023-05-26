@@ -121,15 +121,11 @@ export const RegistrationCard = () => {
 				<div>
 					<p>Masz już konto? </p>
 					<Link to="/signin">
-						<span className="text-blue-700 hover:underline dark:text-blue-500">
+						<span className="text-white font-bold hover:underline">
 							Zaloguj się!
 						</span>
 					</Link>
 				</div>
-
-				{/* <div className="signUpBar">
-      <p className="signUpText">Sign In!</p>
-    </div> */}
 			</form>
 		</div>
 	);

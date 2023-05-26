@@ -54,7 +54,7 @@ export const Rooms = () => {
 					<Spinner />
 				) : rooms && rooms.length > 0 ? (
 					<>
-						<main className = "bg-white">
+						<main className="bg-white">
 							<ul className="flex flex-wrap items-center justify-center">
 								{rooms.map((room) => (
 									<RoomCard
@@ -68,7 +68,7 @@ export const Rooms = () => {
 						</main>
 					</>
 				) : (
-					<p>No rooms for you mf</p>
+					<p>Brak aktualnie dostępnych pokoi</p>
 				)}
 			</div>
 			<TestComponent />;

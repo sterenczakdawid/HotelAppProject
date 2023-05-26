@@ -91,7 +91,7 @@ export const LoginCard = () => {
 				<div>
 					<p>Nie masz jeszcze konta? </p>
 					<Link to="/signup">
-						<span className="text-blue-700 hover:underline dark:text-blue-500">
+						<span className="text-white font-bold hover:underline">
 							Zarejestruj się!
 						</span>
 					</Link>
