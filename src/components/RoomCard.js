@@ -14,7 +14,7 @@ export const RoomCard = ({ room, id }) => {
 						<div className="relative text-[13px] p-5 w-full h-full text-transparent bg-transparent hover:text-white hover:bg-black/[.80] transition-bg duration-300 scale-90 hover:scale-100">
 							<p>{room.description}</p>
 							<button className="px-5 py-3 absolute bottom-20 left-[50%] -translate-x-2/4 text-2xl mt-10 hover:border hover:border-white rounded-lg hover:bg-black">
-								Szczegóły pokoju
+								Szczegóły pokoju <i className="fa-solid fa-arrow-right p-2"></i>
 							</button>
 						</div>
 					</div>
@@ -30,8 +30,9 @@ export const RoomCard = ({ room, id }) => {
 						<div className="flex text-2xl items-center justify-around">
 							<div className="flex items-center justify-center">
 								<i className="fa-solid fa-up-right-and-down-left-from-center px-2"></i>
-								<p>metraż: {room.size}m</p>
-								<sup>2</sup>
+								<p>
+									metraż: {room.size}m<sup>2</sup>
+								</p>
 							</div>
 							<div className="flex items-center justify-center">
 								<i className="fa-solid fa-user px-2"></i>

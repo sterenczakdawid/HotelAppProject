@@ -8,6 +8,7 @@ import {
 	Profile,
 	PageNotFound,
 	RoomDetails,
+	AddNewRoom,
 } from "../pages";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 
@@ -30,10 +31,9 @@ export const AllRoutes = () => {
 				/>
 				<Route path="signup" element={<SignUp />} />
 
-				<Route
-            path='/rooms/:roomId'
-            element={<RoomDetails />}
-          />
+				<Route path="/rooms/:roomId" element={<RoomDetails />} />
+
+				<Route path="/addroom" element={<AddNewRoom />} />
 
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>

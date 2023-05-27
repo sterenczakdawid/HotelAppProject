@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 // import { useState } from "react";
 // import { updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -23,10 +24,16 @@ export const Profile = () => {
 		<div className="profile h-screen">
 			<header className="profileHeader">
 				<p className="pageHeader mt-40">Witaj {auth.currentUser.displayName}</p>
+			</header>
+			<main>
 				<button type="button" className="logOut mt-40" onClick={handleLogout}>
 					Wyloguj
 				</button>
-			</header>
+
+				<Link to="/addroom">
+					<p>Dodaj nowy pokój do listy pokoi</p>
+				</Link>
+			</main>
 		</div>
 	);
 };
