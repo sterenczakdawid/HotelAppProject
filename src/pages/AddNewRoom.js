@@ -2,6 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "../components/Spinner";
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from "firebase/storage";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase/config";
+import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 export const AddNewRoom = () => {
 	const [loading, setLoading] = useState(false);
@@ -18,7 +28,7 @@ export const AddNewRoom = () => {
 
 	const auth = getAuth();
 	const navigate = useNavigate();
-	const isMounted = useRef(true);
+	// const isMounted = useRef(true);
 
 	// useEffect(() => {
 	// 	if (isMounted) {
@@ -36,9 +46,75 @@ export const AddNewRoom = () => {
 	// 	};
 	// }, [isMounted]);
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formData);
+
+		setLoading(true);
+
+		if (images.length > 6) {
+			setLoading(false);
+			toast.error("Maksymalnie 6 zdjęć!");
+			return;
+		}
+
+		const storeImage = async (image) => {
+			return new Promise((resolve, reject) => {
+				const storage = getStorage();
+				const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
+
+				const storageRef = ref(storage, "images/" + filename);
+
+				const uploadTask = uploadBytesResumable(storageRef, image);
+
+				uploadTask.on(
+					"state_changed",
+					(snapshot) => {
+						const progress =
+							(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+						console.log("Uplpoad is " + progress + "% done");
+						switch (snapshot.state) {
+							case "paused":
+								console.log("Upload is paused");
+								break;
+							case "running":
+								console.log("Upload is running");
+								break;
+							default:
+								break;
+						}
+					},
+					(error) => {
+						reject(error);
+					},
+					() => {
+						getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+							resolve(downloadURL);
+						});
+					}
+				);
+			});
+		};
+
+		const imgUrls = await Promise.all(
+			[...images].map((image) => storeImage(image))
+		).catch(() => {
+			setLoading(false);
+			toast.error("Images not uploaded");
+			return;
+		});
+
+		const formDataCopy = {
+			...formData,
+			imgUrls,
+			timestamp: serverTimestamp(),
+		};
+
+		delete formDataCopy.images;
+
+		const docRef = await addDoc(collection(db, "rooms"), formDataCopy);
+		setLoading(false);
+		toast.success("Listing saved");
+		navigate(`/rooms/${docRef.id}`);
 	};
 
 	const onMutate = (e) => {
@@ -72,7 +148,7 @@ export const AddNewRoom = () => {
 		return <Spinner />;
 	}
 	return (
-		<div>
+		<div className = "m-24">
 			<header>
 				<p>Create a Listing</p>
 			</header>
@@ -87,6 +163,7 @@ export const AddNewRoom = () => {
 						onChange={onMutate}
 						maxLength="32"
 						minLength="10"
+						autoComplete="off"
 						required
 					/>
 
@@ -99,6 +176,7 @@ export const AddNewRoom = () => {
 						onChange={onMutate}
 						maxLength="640"
 						minLength="25"
+						autoComplete="off"
 						required
 					/>
 
@@ -110,6 +188,7 @@ export const AddNewRoom = () => {
 						value={capacity}
 						onChange={onMutate}
 						min="1"
+						autoComplete="off"
 						required
 					/>
 
@@ -122,6 +201,7 @@ export const AddNewRoom = () => {
 						onChange={onMutate}
 						maxLength="5"
 						minLength="1"
+						autoComplete="off"
 						required
 					/>
 
@@ -133,6 +213,7 @@ export const AddNewRoom = () => {
 						value={price}
 						onChange={onMutate}
 						min="1"
+						autoComplete="off"
 						required
 					/>
 
