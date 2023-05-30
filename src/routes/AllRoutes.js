@@ -11,6 +11,7 @@ import {
 	AddNewRoom,
 } from "../pages";
 import { ProtectedRoutes } from "./ProtectedRoutes";
+import { AdminRoutes } from "./AdminRoutes";
 
 export const AllRoutes = () => {
 	return (
@@ -33,9 +34,18 @@ export const AllRoutes = () => {
 
 				<Route path="/rooms/:roomId" element={<RoomDetails />} />
 
-				<Route path="/addroom" element={<AddNewRoom />} />
+				{/* <Route path="/addroom" element={<AddNewRoom />} /> */}
 
 				<Route path="*" element={<PageNotFound />} />
+
+				<Route
+					path="addroom"
+					element={
+						<AdminRoutes>
+							<AddNewRoom />
+						</AdminRoutes>
+					}
+				/>
 			</Routes>
 		</main>
 	);
