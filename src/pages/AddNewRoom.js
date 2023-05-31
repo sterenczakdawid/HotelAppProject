@@ -96,7 +96,7 @@ export const AddNewRoom = () => {
 
 		const docRef = await addDoc(collection(db, "rooms"), formDataCopy);
 		setLoading(false);
-		toast.success("Listing saved");
+		toast.success("Pokój został pomyślnie dodany");
 		navigate(`/rooms/${docRef.id}`);
 	};
 
