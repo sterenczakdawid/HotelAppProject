@@ -34,8 +34,6 @@ export const AllRoutes = () => {
 
 				<Route path="/rooms/:roomId" element={<RoomDetails />} />
 
-				{/* <Route path="/addroom" element={<AddNewRoom />} /> */}
-
 				<Route path="*" element={<PageNotFound />} />
 
 				<Route
