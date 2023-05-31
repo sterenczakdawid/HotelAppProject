@@ -9,6 +9,7 @@ import {
 	PageNotFound,
 	RoomDetails,
 	AddNewRoom,
+	EditRoom,
 } from "../pages";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { AdminRoutes } from "./AdminRoutes";
@@ -41,6 +42,15 @@ export const AllRoutes = () => {
 					element={
 						<AdminRoutes>
 							<AddNewRoom />
+						</AdminRoutes>
+					}
+				/>
+
+				<Route
+					path="/edit-room/:roomId"
+					element={
+						<AdminRoutes>
+							<EditRoom />
 						</AdminRoutes>
 					}
 				/>

@@ -7,3 +7,4 @@ export { SignIn } from "./SignIn";
 export { SignUp } from "./SignUp";
 export { Profile } from "./Profile";
 export { AddNewRoom } from "./AddNewRoom";
+export { EditRoom } from "./EditRoom";

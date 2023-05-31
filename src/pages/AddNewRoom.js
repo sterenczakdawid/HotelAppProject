@@ -131,92 +131,125 @@ export const AddNewRoom = () => {
 		return <Spinner />;
 	}
 	return (
-		<div className="m-24">
+		<div>
 			<header>
-				<p>Create a Listing</p>
+				<div
+					className={`flex items-center justify-center flex-col bg-white h-[400px] bg-add-edit bg-cover bg-no-repeat bg-center relative z-0 text-white`}>
+					<div className="absolute w-full h-full bg-black/[.80] -z-10" />
+					<div className="flex flex-col content-center items-center z-5">
+						<h1 className="p-10 text-7xl font-['Dancing_Script']">
+							Dodawanie nowego pokoju
+						</h1>
+					</div>
+				</div>
 			</header>
-			<main>
-				<form onSubmit={onSubmit} className="flex flex-col">
-					<label className="formLabel"> name </label>
-					<input
-						className="formInputName"
-						type="text"
-						id="name"
-						value={name}
-						onChange={onMutate}
-						maxLength="32"
-						minLength="10"
-						autoComplete="off"
-						required
-					/>
+			<div className="bg-gray-200 pt-10">
+				<main>
+					<form onSubmit={onSubmit} className="space-y-7">
+						<div>
+							<label className="block mb-2 text-3xl"> Nazwa pokoju </label>
+							<input
+								className="w-1/2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+								type="text"
+								id="name"
+								placeholder="Nazwa pokoju (10-32 znaków)"
+								value={name}
+								onChange={onMutate}
+								maxLength="32"
+								minLength="10"
+								autoComplete="off"
+								required
+							/>
+						</div>
+						<div>
+							<label className="block mb-2 text-3xl"> Opis pokoju </label>
+							<textarea
+								className="w-1/2 h-[150px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white resize-none"
+								type="text"
+								id="description"
+								placeholder="Tutaj wpisz opis pokoju (25-640 znakow)"
+								value={description}
+								onChange={onMutate}
+								maxLength="640"
+								minLength="25"
+								autoComplete="off"
+								required
+							/>
+						</div>
+						<div className="flex items-center justify-around">
+							<div>
+								<label className="block mb-2 text-3xl"> Pojemność </label>
+								<input
+									className="w-[80px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+									type="number"
+									id="capacity"
+									value={capacity}
+									onChange={onMutate}
+									min="1"
+									autoComplete="off"
+									required
+								/>
+								<span className="w-[10px] px-5 text-2xl">osób</span>
+							</div>
+							<div>
+								<label className="block mb-2 text-3xl"> Metraż pokoju </label>
+								<input
+									className="w-[80px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+									type="text"
+									id="size"
+									value={size}
+									onChange={onMutate}
+									maxLength="5"
+									minLength="1"
+									autoComplete="off"
+									required
+								/>
+								<span className="w-[10px] px-5 text-2xl">
+									m<sup>2</sup>
+								</span>
+							</div>
+							<div>
+								<label className="block mb-2 text-3xl"> Cena </label>
+								<input
+									className="w-[80px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+									type="number"
+									id="price"
+									value={price}
+									onChange={onMutate}
+									min="1"
+									autoComplete="off"
+									required
+								/>
+								<span className="w-[10px] px-5 text-2xl">zł/noc</span>
+							</div>
+						</div>
+						<div>
+							<label className="block mb-2 text-3xl">
+								{" "}
+								Zdjęcia pokoju - max 6{" "}
+							</label>
+							<input
+								className="border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+								type="file"
+								id="images"
+								onChange={onMutate}
+								max="6"
+								accept=".jpg, .png, .jpeg"
+								multiple
+								required
+							/>
+						</div>
 
-					<label className="formLabel"> description </label>
-					<input
-						className="formInputName"
-						type="text"
-						id="description"
-						value={description}
-						onChange={onMutate}
-						maxLength="640"
-						minLength="25"
-						autoComplete="off"
-						required
-					/>
-
-					<label className="formLabel"> capacity </label>
-					<input
-						className="formInputName"
-						type="number"
-						id="capacity"
-						value={capacity}
-						onChange={onMutate}
-						min="1"
-						autoComplete="off"
-						required
-					/>
-
-					<label className="formLabel"> size </label>
-					<input
-						className="formInputName"
-						type="text"
-						id="size"
-						value={size}
-						onChange={onMutate}
-						maxLength="5"
-						minLength="1"
-						autoComplete="off"
-						required
-					/>
-
-					<label className="formLabel"> price </label>
-					<input
-						className="formInputName"
-						type="number"
-						id="price"
-						value={price}
-						onChange={onMutate}
-						min="1"
-						autoComplete="off"
-						required
-					/>
-
-					<label className="formLabel"> images </label>
-					<input
-						className="formInputName"
-						type="file"
-						id="images"
-						onChange={onMutate}
-						max="6"
-						accept=".jpg, .png, .jpeg"
-						multiple
-						required
-					/>
-
-					<button type="submit" className="primaryButton createListingButton">
-						Create Listing
-					</button>
-				</form>
-			</main>
+						<div>
+							<button
+								type="submit"
+								className="rounded-lg border border-black px-7 py-3 m-3 mb-7 hover:bg-black hover:text-white transition duration-300">
+								Zatwierdź
+							</button>
+						</div>
+					</form>
+				</main>
+			</div>
 		</div>
 	);
 };

@@ -9,6 +9,7 @@ module.exports = {
 				"hero-big": "url('assets/images/hero-big.jpg')",
 				"hero-small": "url('assets/images/hero-small.jpg')",
 				"page-not-found": "url('assets/images/page-not-found.jpg')",
+				"add-edit": "url('assets/images/add-edit.jpg')",
 			},
 		},
 	},

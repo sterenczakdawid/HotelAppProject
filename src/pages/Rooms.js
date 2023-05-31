@@ -1,14 +1,27 @@
 import { TestComponent } from "../components";
 import { RoomCard } from "../components";
 import { useEffect, useState } from "react";
-import { getDocs, collection, query, limit } from "firebase/firestore";
+import {
+	getDocs,
+	collection,
+	query,
+	limit,
+	doc,
+	deleteDoc,
+	updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase/config";
 import { toast } from "react-toastify";
 import { Spinner } from "../components/Spinner";
+import { useAuthStatus } from "../hooks/useAuthStatus";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Rooms = () => {
 	const [rooms, setRooms] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const isAdmin = useAuthStatus();
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchRooms = async () => {
@@ -36,6 +49,18 @@ export const Rooms = () => {
 		fetchRooms();
 		// console.log(rooms);
 	}, []);
+
+	const onDelete = async (roomId) => {
+		if (window.confirm("Czy na pewno chcesz usunąć ten pokój?")) {
+			await deleteDoc(doc(db, "rooms", roomId));
+			const updatedRooms = rooms.filter((room) => room.id !== roomId);
+			setRooms(updatedRooms);
+			toast.success("Pokój został usunięty z listy dostępnych pokoi");
+		}
+	};
+
+	const onEdit = (roomId) => navigate(`/edit-room/${roomId}`);
+
 	return (
 		<>
 			<header>
@@ -55,15 +80,33 @@ export const Rooms = () => {
 				) : rooms && rooms.length > 0 ? (
 					<>
 						<main className="bg-white">
+							{isAdmin.adminLoggedIn && (
+								<Link to="/addroom">
+									<button className="mt-10 border border-black rounded-lg p-5 hover:bg-black hover:text-white transition duration-300">
+										Dodaj nowy pokój do listy pokoi
+									</button>
+								</Link>
+							)}
 							<ul className="flex flex-wrap items-center justify-center">
-								{rooms.map((room) => (
-									<RoomCard
-										room={room.data}
-										id={room.id}
-										key={room.id}
-										className="w-[500px]"
-									/>
-								))}
+								{rooms.map((room) =>
+									isAdmin.adminLoggedIn ? (
+										<RoomCard
+											room={room.data}
+											id={room.id}
+											key={room.id}
+											className="w-[500px]"
+											onDelete={() => onDelete(room.id)}
+											onEdit={() => onEdit(room.id)}
+										/>
+									) : (
+										<RoomCard
+											room={room.data}
+											id={room.id}
+											key={room.id}
+											className="w-[500px]"
+										/>
+									)
+								)}
 							</ul>
 						</main>
 					</>
