@@ -70,7 +70,7 @@ export const ContactPage = () => {
 			</section>
 
 			<div className="bg-white flex items-center justify-center flex-col xl:flex-row">
-				<div className="w-[600px] p-5 text-center m-5">
+				<div className="w-[95%] lg:w-[600px] p-5 text-center m-5">
 					<h3 className="my-8 text-4xl font-bold text-gray-900">
 						Napisz do nas
 					</h3>

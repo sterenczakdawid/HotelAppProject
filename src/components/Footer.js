@@ -5,9 +5,9 @@ export const Footer = () => {
 	const year = date.getFullYear();
 
 	return (
-		<footer className="bg-white shadow dark:bg-gray-800">
-			<div className="p-4 mx-auto max-w-screen-xl md:flex md:items-center md:justify-between md:p-6">
-				<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+		<footer className="bg-white shadow border-t-2">
+			<div className="text-xl p-4 mx-auto max-w-screen-xl md:flex md:items-center md:justify-between md:p-6">
+				<span className="text-black sm:text-center">
 					© {year}{" "}
 					<Link to="/" className="hover:underline">
 						VeryCoolHotel
@@ -19,9 +19,9 @@ export const Footer = () => {
 						to="/"
 						target="_blank"
 						rel="noreferrer"
-						className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+						className="text-black hover:text-red-500">
 						<svg
-							className="w-5 h-5"
+							className="w-8 h-8"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							aria-hidden="true">
@@ -37,9 +37,9 @@ export const Footer = () => {
 						to="/"
 						target="_blank"
 						rel="noreferrer"
-						className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+						className="text-black hover:text-blue-500">
 						<svg
-							className="w-5 h-5"
+							className="w-8 h-8"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							aria-hidden="true">
@@ -51,9 +51,9 @@ export const Footer = () => {
 						to="/"
 						target="_blank"
 						rel="noreferrer"
-						className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+						className="text-black hover:text-gray-800">
 						<svg
-							className="w-5 h-5"
+							className="w-8 h-8"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							aria-hidden="true">
