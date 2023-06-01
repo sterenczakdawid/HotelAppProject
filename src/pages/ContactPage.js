@@ -1,10 +1,35 @@
+import { useState } from "react";
 import { ContactCard } from "../components";
+import { toast } from "react-toastify";
 
 import contactEmail from "../assets/images/contact_us_first.png";
 import contactLocalization from "../assets/images/contact_us_second.png";
 import contactPhone from "../assets/images/contact_us_third.png";
 
 export const ContactPage = () => {
+	const [formData, setFormData] = useState({
+		topic: "",
+		description: "",
+	});
+
+	const { topic, description } = formData;
+
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		setFormData(() => ({
+			topic: "",
+			description: "",
+		}));
+		toast.success("Wiadomość została wysłana!");
+	};
+
+	const onMutate = (e) => {
+		setFormData((prevState) => ({
+			...prevState,
+			[e.target.id]: e.target.value,
+		}));
+	};
+
 	return (
 		<>
 			<header>
@@ -43,9 +68,60 @@ export const ContactPage = () => {
 					/>
 				</div>
 			</section>
-			<div className="flex items-center justify-center bg-white">
-				<div className="h-[800px] w-[95%] max-w-screen-xl border mt-5 p-5 text-center">
-					<p>formularz</p>
+			<div className="bg-white flex items-center justify-center flex-col xl:flex-row">
+				<div className="w-full h-[550px] max-w-screen-xl border-y-2 p-5 text-center xl:border-none">
+					<h3 className="my-8 text-4xl font-bold text-gray-900">
+						Napisz do nas
+					</h3>
+					<form onSubmit={onSubmit} className="space-y-7 mt-20">
+						<div>
+							<label className="block mb-2 text-3xl"> Temat </label>
+							<input
+								className="w-3/4 max-w-[600px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+								type="text"
+								id="topic"
+								placeholder="Temat"
+								value={topic}
+								onChange={onMutate}
+								autoComplete="off"
+								required
+							/>
+						</div>
+						<div>
+							<label className="block mb-2 text-3xl"> Treść wiadomości </label>
+							<textarea
+								className="w-3/4 max-w-[600px] h-[150px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white resize-none"
+								type="text"
+								id="description"
+								placeholder="Napisz, w czym możemy Ci pomóc"
+								value={description}
+								onChange={onMutate}
+								autoComplete="off"
+								required
+							/>
+						</div>
+						<div>
+							<button
+								type="submit"
+								className="rounded-lg border border-black px-8 py-3 m-3 my-20 hover:bg-black hover:text-white transition duration-300">
+								Wyślij
+							</button>
+						</div>
+					</form>
+				</div>
+				<div className="hidden md:block mb-20">
+					<h3 className="my-8 text-4xl font-bold text-gray-900">
+						Znajdź nas na mapie!
+					</h3>
+					<iframe
+						className=" shadow-[0px_5px_15px_rgba(0,0,0,0.35)] m-5"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.2583478001084!2d21.00798907644807!3d52.22052397198417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecce948b6cb17%3A0x153b75bc0ab4c489!2splac%20Politechniki%201%2C%2000-661%20Warszawa!5e0!3m2!1spl!2spl!4v1685624820218!5m2!1spl!2spl"
+						width="600"
+						height="450"
+						style={{ border: "2px solid black" }}
+						allowfullscreen=""
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>
 		</>

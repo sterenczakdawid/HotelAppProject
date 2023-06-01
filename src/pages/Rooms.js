@@ -1,4 +1,3 @@
-import { TestComponent } from "../components";
 import { RoomCard } from "../components";
 import { useEffect, useState } from "react";
 import {
@@ -114,7 +113,6 @@ export const Rooms = () => {
 					<p>Brak aktualnie dostępnych pokoi</p>
 				)}
 			</div>
-			<TestComponent />;
 		</>
 	);
 };
