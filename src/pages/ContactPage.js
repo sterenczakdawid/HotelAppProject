@@ -68,16 +68,17 @@ export const ContactPage = () => {
 					/>
 				</div>
 			</section>
+
 			<div className="bg-white flex items-center justify-center flex-col xl:flex-row">
-				<div className="w-full h-[550px] max-w-screen-xl border-y-2 p-5 text-center xl:border-none">
+				<div className="w-[600px] p-5 text-center m-5">
 					<h3 className="my-8 text-4xl font-bold text-gray-900">
 						Napisz do nas
 					</h3>
-					<form onSubmit={onSubmit} className="space-y-7 mt-20">
+					<form onSubmit={onSubmit} className="space-y-7 pt-14 h-[450px]">
 						<div>
 							<label className="block mb-2 text-3xl"> Temat </label>
 							<input
-								className="w-3/4 max-w-[600px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+								className="w-[95%] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 								type="text"
 								id="topic"
 								placeholder="Temat"
@@ -90,7 +91,7 @@ export const ContactPage = () => {
 						<div>
 							<label className="block mb-2 text-3xl"> Treść wiadomości </label>
 							<textarea
-								className="w-3/4 max-w-[600px] h-[150px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white resize-none"
+								className="w-[95%] h-[150px] border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-900 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white resize-none"
 								type="text"
 								id="description"
 								placeholder="Napisz, w czym możemy Ci pomóc"
@@ -109,7 +110,7 @@ export const ContactPage = () => {
 						</div>
 					</form>
 				</div>
-				<div className="hidden md:block mb-20">
+				<div className="hidden md:block p-5 m-5">
 					<h3 className="my-8 text-4xl font-bold text-gray-900">
 						Znajdź nas na mapie!
 					</h3>
