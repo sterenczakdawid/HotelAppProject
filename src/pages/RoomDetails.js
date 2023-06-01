@@ -1,15 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase/config";
 import { Spinner } from "../components";
+import SwiperCore, {
+	Navigation,
+	EffectFade,
+	Pagination,
+	Scrollbar,
+	A11y,
+} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import "../assets/slider.css";
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 // import Calendar from "react-calendar";
 // import { isWithinInterval, getTime } from "date-fns";
 
 export const RoomDetails = () => {
 	const [room, setRoom] = useState(null);
 	const [loading, setLoading] = useState(true);
+
+	const swiperNavPrevRef = useRef(null);
+	const swiperNavNextRef = useRef(null);
 
 	// const [date, setDate] = useState(new Date());
 	// const [disabledRanges, setDisabledRanges] = useState([]);
@@ -60,17 +74,96 @@ export const RoomDetails = () => {
 
 	return (
 		<main className="bg-white">
-			{/* SLIDER */}
+			{/* <div className="h-[80.8px] w-full bg-black/[.80]"></div>
+			{console.log(room.imgUrls)} */}
 
-			<div className="listingDetails my-28">
-				<p className="listingName">{room.name}</p>
-				<p>{room.price}zł/noc</p>
-				<p>osob: {room.capacity}</p>
-				<p>opis: {room.description}</p>
-				<p>wielkosć: {room.size}</p>
+			<Swiper
+				className="w-full"
+				slidesPerView={1}
+				// pagination={{ clickable: true }}
+				modules={[Navigation, EffectFade]}
+				navigation
+				effect={"fade"}
+				loop
+				speed={800}>
+				{room.imgUrls.map((url, index) => (
+					<SwiperSlide key={index} className="">
+						<img
+							className="w-full h-[500px] object-cover"
+							src={`${room.imgUrls[index]}`}
+							alt=""
+						/>
+					</SwiperSlide>
+				))}
+			</Swiper>
+
+			<section className="flex items-center justify-center flex-col">
+				<div className="pt-16 max-w-screen-xl w-full mx-auto my-0 flex items-center justify-center flex-col">
+					<h2 className="uppercase text-5xl md:text-6xl font-thin ">
+						{room.name}
+					</h2>
+					<div className="underline w-[85%] h-1 bg-gray-200 mt-1 mb-10"></div>
+				</div>
+				<div className="text-center">
+					<p className="uppercase text-3xl md:text-4xl font-thin">
+						Podstawowe informacje:
+					</p>
+					<div className="flex text-2xl items-center justify-center pt-8 pb-5">
+						<div className="flex items-center justify-center mx-10">
+							<i className="fa-solid fa-up-right-and-down-left-from-center px-2"></i>
+							<p>
+								metraż: {room.size}m<sup>2</sup>
+							</p>
+						</div>
+						<div className="flex items-center justify-center mx-10">
+							<i className="fa-solid fa-user px-2"></i>
+							<p>max osób: {room.capacity}</p>
+						</div>
+					</div>
+					<p className="py-5 px-10 text-center max-w-[1000px]">
+						{room.description}
+					</p>
+				</div>
+
+				<div className="h-[180px] w-3/5 max-w-[360px] flex justify-center items-center flex-col border-2 border-black my-20 shadow-[0px_5px_15px_rgba(0,0,0,0.35)] rounded-lg">
+					<p className="text-black text-5xl py-3">{room.price} zł</p>
+					<p className="pb-10">/noc</p>
+					<button className="text-3xl border-2 border-black w-3/5 h-[35px] hover:bg-black hover:text-white transition duration-300 rounded-lg">
+						Zarezerwuj
+					</button>
+				</div>
+			</section>
+
+			<div className="text-center p-5 w-full flex justify-center items-center flex-col border-t-2 border-b-2 border-gray-200">
+				<p className="uppercase text-3xl md:text-3xl font-thin py-5">
+					Informacje Dodatkowe
+				</p>
+				<div className="flex items-center justify-center">
+					<i className="fa-regular fa-clock p-2 "></i>
+					<p>
+						Przyjazd <span className="px-12">16:00</span>
+					</p>
+				</div>
+				<div className="flex items-center justify-center">
+					<i className="fa-regular fa-clock p-2"></i>
+					<p className="">
+						Wyjazd <span className="px-12">12:00</span>
+					</p>
+				</div>
+				<p className="p-5">
+					Zwierzęta są akceptowane w cenie 70zł/doba za jedno zwierzę.
+				</p>
 			</div>
 
-			<ul>Zajęte terminy:</ul>
+			<button className="p-10">
+				<Link
+					to="/rooms"
+					className="px-7 py-2 rounded-lg mb-10 text-3xl border-2 border-gray-400 bg-gray-400 hover:bg-black hover:text-white transition duration-300">
+					Powrót do listy pokoi
+				</Link>
+			</button>
+
+			{/* <ul>Zajęte terminy:</ul> */}
 			{/* <Calendar
 				minDate={new Date()}
 				onChange={setDate}

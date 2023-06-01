@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Spinner } from "../components/Spinner";
 import {
 	getStorage,
@@ -267,6 +267,13 @@ export const EditRoom = () => {
 								type="submit"
 								className="rounded-lg border border-black px-7 py-3 m-3 mb-7 hover:bg-black hover:text-white transition duration-300">
 								Zatwierdź
+							</button>
+							<button>
+								<Link
+									to="/rooms"
+									className="rounded-lg border border-black px-7 py-3 m-3 mb-7 hover:bg-black hover:text-white transition duration-300">
+									Anuluj
+								</Link>
 							</button>
 						</div>
 					</form>
