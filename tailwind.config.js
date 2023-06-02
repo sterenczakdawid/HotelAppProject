@@ -10,6 +10,7 @@ module.exports = {
 				"hero-small": "url('assets/images/hero-small.jpg')",
 				"page-not-found": "url('assets/images/page-not-found.jpg')",
 				"add-edit": "url('assets/images/add-edit.jpg')",
+				"profile-lol":"url('assets/images/profile.jpg')",
 			},
 		},
 	},

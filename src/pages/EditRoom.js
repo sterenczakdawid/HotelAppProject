@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 
 export const EditRoom = () => {
 	const [loading, setLoading] = useState(false);
+	// eslint-disable-next-line
 	const [room, setRoom] = useState();
 	const [formData, setFormData] = useState({
 		name: "",
@@ -72,8 +73,8 @@ export const EditRoom = () => {
 				uploadTask.on(
 					"state_changed",
 					(snapshot) => {
-						const progress =
-							(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+						// const progress =
+						// (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 						// console.log("Uplpoad is " + progress + "% done");
 						switch (snapshot.state) {
 							case "paused":
