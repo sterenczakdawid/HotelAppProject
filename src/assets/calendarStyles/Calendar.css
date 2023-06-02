@@ -7,6 +7,12 @@
 	font-family: Manrope, Helvetica, sans-serif;
 	line-height: 1.125em;
 }
+@media screen and (max-width: 500px) {
+	.react-calendar {
+		width: 100%;
+	}
+}
+
 .react-calendar--doubleView {
 	width: 700px;
 }
@@ -149,8 +155,8 @@
 	background: #a9d4ff;
 }
 .react-calendar__tile--active {
-  background: #4f46e5;
-  color: white;
+	background: #4f46e5;
+	color: white;
 }
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {

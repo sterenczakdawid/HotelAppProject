@@ -13,39 +13,46 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "../assets/slider.css";
+// import { Timestamp } from "firebase/firestore";
+
+import Calendar from "react-calendar";
+import { differenceInCalendarDays, addDays } from "date-fns";
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-// import Calendar from "react-calendar";
-// import { isWithinInterval, getTime } from "date-fns";
 
 export const RoomDetails = () => {
 	const [room, setRoom] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
 
-	// const [date, setDate] = useState(new Date());
-	// const [disabledRanges, setDisabledRanges] = useState([]);
+	const [date, setDate] = useState(new Date());
+	// const [disabledDates, setDisabledDates] = useState([]);
+
+	const today = new Date();
+	const tomorrow = addDays(today, 1);
+	const in2Days = addDays(today, 2);
+	const in3Days = addDays(today, 3);
+	const randomDate = addDays(today, 8);
+	const randomDate2 = addDays(today, 9);
+	const randomDate3 = addDays(today, 10);
+	const randomDate4 = addDays(today, 11);
+	const randomDateX = addDays(today, 14);
+	const disabledDates = [
+		tomorrow,
+		in2Days,
+		in3Days,
+		randomDate,
+		randomDate2,
+		randomDate3,
+		randomDate4,
+		randomDateX,
+	];
 
 	const navigate = useNavigate();
 	const params = useParams();
 
-	// function isWithinRange(date, range) {
-	// 	return isWithinInterval(date, { start: range[0], end: range[1] });
-	// }
-
-	// function isWithinRanges(date, ranges) {
-	// 	return ranges.some((range) => isWithinRange(date, range));
-	// }
-
-	// function tileDisabled({ date, view }) {
-	// 	// Add class to tiles in month view only
-	// 	if (view === "month") {
-	// 		// Check if a date React-Calendar wants to check is within any of the ranges
-	// 		return isWithinRanges(date, disabledRanges);
-	// 	}
-	// }
-
 	useEffect(() => {
-		const fetchListing = async () => {
+		const fetchRoom = async () => {
 			const docRef = doc(db, "rooms", params.roomId);
 			const docSnap = await getDoc(docRef);
 
@@ -56,21 +63,38 @@ export const RoomDetails = () => {
 			}
 		};
 
-		fetchListing();
+		fetchRoom();
 	}, [navigate, params.roomId]);
 
 	if (loading) {
 		return <Spinner />;
 	}
 
-	// function reserve(start, end) {
-	// 	setDisabledRanges((disabledRanges) => [...disabledRanges, [start, end]]);
-	// 	console.log(disabledRanges);
-	// }
+	function reserve(date) {
+		// setDisabledRanges((disabledRanges) => [...disabledRanges, [start, end]]);
+		// setRoom((prevState) => ({
+		// 	...prevState,
+		// 	reserved: [...reserved, date],
+		// }));
+		// setDisabledDates((disabledDates) => [...disabledDates, date]);
+		// console.log(disabledDates[0]);
+	}
+
+	function tileDisabled({ date, view }) {
+		// Disable tiles in month view only
+		if (view === "month") {
+			// Check if a date React-Calendar wants to check is on the list of disabled dates
+			return disabledDates.find((dDate) => isSameDay(dDate, date));
+		}
+	}
+
+	function isSameDay(a, b) {
+		return differenceInCalendarDays(a, b) === 0;
+	}
 
 	return (
 		<>
-			<main className="bg-white">
+			<main className="bg-white -z-1">
 				<Swiper
 					className="w-full"
 					slidesPerView={1}
@@ -80,7 +104,7 @@ export const RoomDetails = () => {
 					loop
 					speed={800}>
 					{room.imgUrls.map((url, index) => (
-						<SwiperSlide key={index} className="-z-1 relative">
+						<SwiperSlide key={index} className="">
 							<img
 								className="w-full h-[500px] object-cover"
 								src={`${room.imgUrls[index]}`}
@@ -128,9 +152,44 @@ export const RoomDetails = () => {
 						</button>
 					</div>
 				</section>
+
 				<Popup open={isOpen} onClose={() => setIsOpen(false)}>
-					Fancy popup
+					<p className="text-3xl m-1">Wybierz datę rezerwacji</p>
+					<Calendar
+						minDate={new Date()}
+						onChange={setDate}
+						value={date}
+						// selectRange={true}
+						tileDisabled={tileDisabled}
+						className="REACT-CALENDAR p-2"
+						view="month"
+					/>
+					{/* <ul>zarezerwowane terminy:</ul>
+					{room.reserved && room.reserved instanceof Timestamp && (
+						<p>Reserved: {room.reserved.toDate().toLocaleString()}</p>
+					)} */}
+					{/* {date.length > 0 ? (
+						<p>
+							<span>Start:</span> {date[0].toDateString()}
+							&nbsp; to &nbsp;
+							<span>End:</span> {date[1].toDateString()}
+						</p>
+					) : (
+						<p>
+							<span>Default selected date:</span> {date.toDateString()}
+						</p>
+					)} */}
+					<button
+						className="text-3xl border-2 border-black w-3/5 max-w-[200px] h-[35px] hover:bg-black hover:text-white transition duration-300 rounded-lg m-2 hover:bg-black hover:text-white transition duration-300"
+						disabled
+						onClick={() => {
+							reserve(date);
+							// console.log(date);
+						}}>
+						Rezerwuj
+					</button>
 				</Popup>
+
 				<div className="text-center p-5 w-full flex justify-center items-center flex-col border-t-2 border-b-2 border-gray-200">
 					<p className="uppercase text-3xl md:text-3xl font-thin py-5">
 						Informacje Dodatkowe
@@ -159,34 +218,6 @@ export const RoomDetails = () => {
 						Powrót do listy pokoi
 					</Link>
 				</button>
-
-				{/* <ul>Zajęte terminy:</ul> */}
-				{/* <Calendar
-				minDate={new Date()}
-				onChange={setDate}
-				value={date}
-				selectRange={true}
-				tileDisabled={tileDisabled}
-				className="REACT-CALENDAR p-2"
-				view="month"
-			/>
-			{date.length > 0 ? (
-				<p>
-					<span>Start:</span> {date[0].toDateString()}
-					&nbsp; to &nbsp;
-					<span>End:</span> {date[1].toDateString()}
-				</p>
-			) : (
-				<p>
-					<span>Default selected date:</span> {date.toDateString()}
-				</p>
-			)}
-			<button
-				onClick={() => {
-					reserve(date[0], date[1]);
-				}}>
-				rezerwuj
-			</button> */}
 			</main>
 		</>
 	);

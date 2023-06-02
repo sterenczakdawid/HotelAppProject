@@ -2,3 +2,8 @@
 .swiper-button-prev {
 	color: #fff !important;
 }
+
+.swiper,
+.swiper-container {
+	z-index: 0;
+}
