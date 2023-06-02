@@ -16,3 +16,5 @@ export { RegistrationCard } from "./RegistrationCard";
 export { ScrollToTop } from "./Other/ScrollToTop";
 
 export { Spinner } from "./Spinner";
+
+export { Popup } from "./Popup";
