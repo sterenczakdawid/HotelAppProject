@@ -115,6 +115,7 @@ export const ContactPage = () => {
 						Znajdź nas na mapie!
 					</h3>
 					<iframe
+						title="map"
 						className=" shadow-[0px_5px_15px_rgba(0,0,0,0.35)] m-5"
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.2583478001084!2d21.00798907644807!3d52.22052397198417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecce948b6cb17%3A0x153b75bc0ab4c489!2splac%20Politechniki%201%2C%2000-661%20Warszawa!5e0!3m2!1spl!2spl!4v1685624820218!5m2!1spl!2spl"
 						width="600"

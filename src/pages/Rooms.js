@@ -7,7 +7,6 @@ import {
 	limit,
 	doc,
 	deleteDoc,
-	updateDoc,
 } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { toast } from "react-toastify";

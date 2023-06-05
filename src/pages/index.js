@@ -8,3 +8,4 @@ export { SignUp } from "./SignUp";
 export { Profile } from "./Profile";
 export { AddNewRoom } from "./AddNewRoom";
 export { EditRoom } from "./EditRoom";
+export { Statute } from "./Statute";

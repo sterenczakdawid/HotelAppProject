@@ -52,8 +52,8 @@ export const AddNewRoom = () => {
 				uploadTask.on(
 					"state_changed",
 					(snapshot) => {
-						const progress =
-							(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+						// const progress =
+						// (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 						// console.log("Uplpoad is " + progress + "% done");
 						switch (snapshot.state) {
 							case "paused":

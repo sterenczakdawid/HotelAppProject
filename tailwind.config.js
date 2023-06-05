@@ -11,6 +11,7 @@ module.exports = {
 				"page-not-found": "url('assets/images/page-not-found.jpg')",
 				"add-edit": "url('assets/images/add-edit.jpg')",
 				"profile-lol":"url('assets/images/profile.jpg')",
+				"statute":"url('assets/images/statute.jpg')",
 			},
 		},
 	},

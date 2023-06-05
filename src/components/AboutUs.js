@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const AboutUs = () => {
 	return (
 		<>
@@ -58,9 +60,26 @@ export const AboutUs = () => {
 							Zwierzęta są akceptowane w cenie 70zł/doba za jedno zwierzę.
 						</p>
 					</div>
-					<p className = "max-w-[1050px] p-10 mt-20">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero ducimus tempore quia nobis hic consectetur ipsam repellendus eos perferendis officia, quidem iusto recusandae saepe ut provident eius maiores odio inventore quod deserunt. Tempora quod ipsum quam. Nihil deserunt inventore suscipit ipsum rem dicta eius amet cumque, ut, unde eum quia cum enim ipsam autem molestiae pariatur officia iure. Deleniti minus necessitatibus odio officiis vero quo quaerat unde error, ullam aperiam perspiciatis, delectus, nisi corrupti fugit.</p>
+					<p className="max-w-[1050px] p-10 mt-20">
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
+						ducimus tempore quia nobis hic consectetur ipsam repellendus eos
+						perferendis officia, quidem iusto recusandae saepe ut provident eius
+						maiores odio inventore quod deserunt. Tempora quod ipsum quam. Nihil
+						deserunt inventore suscipit ipsum rem dicta eius amet cumque, ut,
+						unde eum quia cum enim ipsam autem molestiae pariatur officia iure.
+						Deleniti minus necessitatibus odio officiis vero quo quaerat unde
+						error, ullam aperiam perspiciatis, delectus, nisi corrupti fugit.
+					</p>
 
-					<p className = "max-w-[1050px] p-10 mt-20 font-bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa quasi reiciendis obcaecati aliquam id explicabo maxime aperiam quaerat quo repellat.</p>
+					<p className="max-w-[1050px] p-10 mt-20 font-bold">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa quasi
+						reiciendis obcaecati aliquam id explicabo maxime aperiam quaerat quo
+						repellat.
+					</p>
+
+					<Link to="statute">
+						<p className = "underline">Kliknij, żeby zobaczyć regulamin hotelu</p>
+					</Link>
 				</div>
 			</section>
 		</>

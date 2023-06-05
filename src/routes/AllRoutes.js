@@ -10,6 +10,7 @@ import {
 	RoomDetails,
 	AddNewRoom,
 	EditRoom,
+	Statute,
 } from "../pages";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { AdminRoutes } from "./AdminRoutes";
@@ -32,6 +33,8 @@ export const AllRoutes = () => {
 					}
 				/>
 				<Route path="signup" element={<SignUp />} />
+
+				<Route path="statute" element={<Statute />} />
 
 				<Route path="/rooms/:roomId" element={<RoomDetails />} />
 
