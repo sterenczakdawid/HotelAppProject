@@ -36,7 +36,7 @@ export const AboutUs = () => {
 				</div>
 			</section>
 
-			<section className="h-screen border-t-2 border-gray-200 bg-gray-200 text-3xl">
+			<section className=" border-t-2 border-gray-200 bg-gray-200 text-3xl">
 				<div className="max-w-screen-xl w-full flex items-center justify-center flex-col mx-auto my-0 pt-20">
 					<h2 className="uppercase text-5xl">Kilka ważnych informacji</h2>
 					<div className="underline w-[100px] h-2 bg-black mt-1 mb-10"></div>
@@ -67,17 +67,14 @@ export const AboutUs = () => {
 						maiores odio inventore quod deserunt. Tempora quod ipsum quam. Nihil
 						deserunt inventore suscipit ipsum rem dicta eius amet cumque, ut,
 						unde eum quia cum enim ipsam autem molestiae pariatur officia iure.
-						Deleniti minus necessitatibus odio officiis vero quo quaerat unde
-						error, ullam aperiam perspiciatis, delectus, nisi corrupti fugit.
 					</p>
 
 					<p className="max-w-[1050px] p-10 mt-20 font-bold">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa quasi
-						reiciendis obcaecati aliquam id explicabo maxime aperiam quaerat quo
-						repellat.
+						reiciendis obcaecati.
 					</p>
 
-					<Link to="statute">
+					<Link to="statute" className = "p-10">
 						<p className = "underline">Kliknij, żeby zobaczyć regulamin hotelu</p>
 					</Link>
 				</div>

@@ -4,15 +4,6 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 export const RoomCard = ({ room, id, onDelete, onEdit }) => {
 	const isAdmin = useAuthStatus();
 
-	// const onDelete = async (roomId) => {
-	// 	if (window.confirm("Czy na pewno chcesz usunąć ten pokój?")) {
-	// 		await deleteDoc(doc(db, "rooms", roomId));
-	// 		const updatedRooms = rooms.filter((room) => room.id !== roomId);
-	// 		setRooms(updatedRooms);
-	// 		toast.success("Pokój został usunięty z listy dostępnych pokoi");
-	// 	}
-	// };
-
 	return (
 		<>
 			<div

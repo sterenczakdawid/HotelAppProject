@@ -57,7 +57,7 @@ export const LoginCard = () => {
 					</label>
 					<input
 						type="email"
-						className="emailInput w-3/4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+						className="emailInput w-3/4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
 						placeholder="name@company.com"
 						id="email"
 						value={email}
@@ -72,7 +72,7 @@ export const LoginCard = () => {
 					<input
 						// type={showPassword ? "text" : "password"}
 						type="password"
-						className="passwordInput w-3/4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+						className="passwordInput w-3/4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
 						placeholder="•••••••"
 						id="password"
 						value={password}
